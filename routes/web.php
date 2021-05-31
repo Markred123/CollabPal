@@ -20,6 +20,10 @@ Route::get('/welcome', function () {
 });
 
 Route::get('/registration', function(){
+    if(!Auth::guest()){
+        return redirect()->intended('welcome');
+    }
+    else
     return view('registration');
 });
 
@@ -27,7 +31,7 @@ Route::get('/registration', function(){
 //Logout Routes
 Route::Get('/destroy',function(){
     Session::flush();
-    return view('welcome');
+    return redirect()->intended('welcome');
 });
 //Registration Routes
 Route::get('/register',[RegistrationController::class, 'create']);

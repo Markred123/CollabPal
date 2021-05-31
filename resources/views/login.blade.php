@@ -33,7 +33,12 @@
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
 
-                            <input required type ="password" id="password" name="password" class="form-control input-sm" placeholder="Password"><br>
+                            <input required type ="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror input-sm" placeholder="Password"><br>
+                            @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
                         </div>
                     </div>
                 </div>

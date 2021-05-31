@@ -23,7 +23,9 @@ class LoginController extends Controller
         }
 
           return back()->withErrors([
-            'email'=>'Account not found'
+            'email'=>'Account not found',
+            'password'=>'Login Credentials Incorrect'
+
 
           ]);
 
