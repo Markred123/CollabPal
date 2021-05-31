@@ -15,7 +15,7 @@ use App\Http\Controllers\RegistrationController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
@@ -23,11 +23,28 @@ Route::get('/registration', function(){
     return view('registration');
 });
 
-Route::Get('/test',function(){
-    return "hello";
-});
 
+//Logout Routes
+Route::Get('/destroy',function(){
+    Session::flush();
+    return view('welcome');
+});
+//Registration Routes
 Route::get('/register',[RegistrationController::class, 'create']);
 Route::post('register', [RegistrationController::class, 'store'] );
 
+//Login Routes
+Route::post('/AppLogin',[\App\Http\Controllers\LoginController::class,'authenticate']);
+Route::get('/login', function(){
+    return view('login');
+});
 
+//Testing Routes
+Route::get('/test', function(){
+    return view('test');
+});
+
+//User Info Route
+Route::get('/userInfo', function(){
+    return view('userinfo');
+});
