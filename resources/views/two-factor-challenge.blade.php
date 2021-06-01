@@ -26,7 +26,7 @@
 
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
-                            <input required type ="2faCode" id="2faCode" name="2faCode" class="form-control @error('2faCode') is-invalid @enderror input-sm" placeholder="Code"><br>
+                            <input type="text" name="code" placeholder="Code"><br>
                         </div>
                     </div>
                 </div>
