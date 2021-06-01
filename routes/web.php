@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\LoginController;
 
 
 /*
@@ -38,15 +39,17 @@ Route::get('/register',[RegistrationController::class, 'create']);
 Route::post('register', [RegistrationController::class, 'store'] );
 
 //Login Routes
-Route::post('/AppLogin',[\App\Http\Controllers\LoginController::class,'authenticate']);
-Route::get('/login', function(){
-    return view('login');
-});
+//Route::get('login', function(){
+//    return view('login');
+//});
+//Route::post('AppLogin',[\App\Http\Controllers\LoginController::class,'authenticate']);
+
+
 
 //Testing Routes
-Route::get('/test', function(){
-    return view('test');
-});
+//Route::get('/2faChallenge', function(){
+//    return view('2faChallenge');
+//});
 
 //User Info Route
 Route::get('/userInfo', function(){

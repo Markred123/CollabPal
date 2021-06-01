@@ -21,7 +21,7 @@
         <br>
 
         <div class ="container col-md-12">
-            <form class="card p-3 bg-light " method="post" action="/AppLogin">
+            <form class="card p-3 bg-light " method="post" action="login">
                 @csrf
                 <div class = "container  col-lg-12">
 

@@ -132,13 +132,14 @@ return [
     */
 
     'features' => [
-        Features::registration(),
+        //Features::registration(),
+        //Features::login(),
         Features::resetPasswords(),
-        // Features::emailVerification(),
+        Features::emailVerification(),
         Features::updateProfileInformation(),
         Features::updatePasswords(),
         Features::twoFactorAuthentication([
-            'confirmPassword' => true,
+            'confirmPassword' => false,
         ]),
     ],
 
