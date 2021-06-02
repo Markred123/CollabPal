@@ -8,6 +8,15 @@
     left:50%;
     transform: translate(-50%,-50%);
     }
+    body {
+        background: url('https://images.pexels.com/photos/965121/pexels-photo-965121.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+        padding-top: 50px;
+
+    }
 
     </style>
     <meta charset="UTF-8">
@@ -52,12 +61,9 @@
 
 
 </div>
-<div
-    style="
-    background-image: url('https://images.pexels.com/photos/965121/pexels-photo-965121.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
-    height: 100vh; "
-></div>
+
 @yield('content')
+
 
 
 
