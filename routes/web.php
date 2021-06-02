@@ -55,3 +55,11 @@ Route::post('register', [RegistrationController::class, 'store'] );
 Route::get('/userInfo', function(){
     return view('userinfo');
 });
+//Route::get('/FileUpload', function(){
+//    return view('FileUpload');
+//});
+Route::get('FileUpload', [\App\Http\Controllers\FileUploadController::class, 'fileUpload'] );
+
+Route::post('file-upload', [\App\Http\Controllers\FileUploadController::class, 'update']);
+
+
