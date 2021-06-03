@@ -19,6 +19,9 @@ use App\Http\Controllers\LoginController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/welcome', function () {
+    return view('welcome');
+});
 
 Route::get('/registration', function(){
     if(!Auth::guest()){
@@ -63,3 +66,16 @@ Route::get('FileUpload', [\App\Http\Controllers\FileUploadController::class, 'fi
 Route::post('file-upload', [\App\Http\Controllers\FileUploadController::class, 'update']);
 
 
+Route::get('/MyFiles', function(){
+    return view('MyFiles');
+});
+
+
+Route::get('/Testy', function(){
+    $directory="files/";
+    $files = Storage::allFiles($directory);
+    foreach($files as $file){
+        echo $file."\n";
+
+    }
+});

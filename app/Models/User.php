@@ -45,4 +45,8 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($password);
     }
+
+    public function filess(){
+        return $this->hasMany('app\Files');
+    }
 }
