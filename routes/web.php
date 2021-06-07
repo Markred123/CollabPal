@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\LoginController;
+use App\User;
 
 
 /*
@@ -78,4 +79,26 @@ Route::get('/Testy', function(){
         echo $file."\n";
 
     }
+});
+
+use Illuminate\Http\Request;
+
+
+//Testing
+
+Route::get('/billing-portal', function (Request $request) {
+    return $request->user()->redirectToBillingPortal(url('/welcome'));
+});
+
+
+
+
+Route::post('/user/subscribe', function (Request $request) {
+    $request->user()->newSubscription(
+        'Premium Collabpal', 'price_1IzgvTF738EjpHYFAaTxqTWe'
+    )->create($request->paymentMethodId);
+});
+
+Route::get('/subscribe', function(){
+    return view('subscribe');
 });

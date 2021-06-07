@@ -32,7 +32,15 @@
                     @endif
 
                 </form>
-                <h5>Premium Account:</h5>
+                @if(Auth::User()->subscribed('default'))
+                <h5><a href="/billing-portal">Billing Portal</a></h5>
+                @else
+                    <form method="POST" action="/user/subscribe">
+                        @csrf
+                        <input type="submit" value="Subscribe" class="btn">
+                    </form>
+                @endif
+
 
             </div>
             <div class ="col-sm"></div>
