@@ -32,7 +32,7 @@
                     @endif
 
                 </form>
-                @if(Auth::User()->subscribed('default'))
+                @if(Auth::User()->subscribed('Premium Collabpal'))
                 <h5><a href="/billing-portal">Billing Portal</a></h5>
                 @else
                     <form method="POST" action="/user/subscribe">

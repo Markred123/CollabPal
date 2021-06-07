@@ -87,18 +87,12 @@ use Illuminate\Http\Request;
 //Testing
 
 Route::get('/billing-portal', function (Request $request) {
-    return $request->user()->redirectToBillingPortal(url('/welcome'));
+    return $request->user()->redirectToBillingPortal(url('/userInfo'));
 });
 
 
 
 
-Route::post('/user/subscribe', function (Request $request) {
-    $request->user()->newSubscription(
-        'Premium Collabpal', 'price_1IzgvTF738EjpHYFAaTxqTWe'
-    )->create($request->paymentMethodId);
-});
+Route::post('/user/subscribe', [\App\Http\Controllers\SubscriptionController::class, 'subscribe']);
 
-Route::get('/subscribe', function(){
-    return view('subscribe');
-});
+
