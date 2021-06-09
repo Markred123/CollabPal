@@ -35,6 +35,9 @@
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <input required type ="password" class="form-control input-sm" id="password_confirmation" name="password_confirmation"  placeholder="Confirmation"><br>
                         </div>
+                    @if (session('error'))
+                     <div class="alert alert-danger">{{ session('error') }}</div>
+                    @endif
                 <input type="submit" value="Register" class="btn btn-info btn-block">
 
             </form>

@@ -42,32 +42,18 @@ Route::Get('/destroy',function(){
 Route::get('/register',[RegistrationController::class, 'create']);
 Route::post('register', [RegistrationController::class, 'store'] );
 
-//Login Routes
-//Route::get('login', function(){
-//    return view('login');
-//});
-//Route::post('AppLogin',[\App\Http\Controllers\LoginController::class,'authenticate']);
-
-
-
-//Testing Routes
-//Route::get('/2faChallenge', function(){
-//    return view('2faChallenge');
-//});
 
 //User Info Route
 Route::get('/userInfo', function(){
     return view('userinfo');
 });
-//Route::get('/FileUpload', function(){
-//    return view('FileUpload');
-//});
-Route::get('FileUpload', [\App\Http\Controllers\FileUploadController::class, 'fileUpload'] );
 
-Route::post('file-upload', [\App\Http\Controllers\FileUploadController::class, 'update']);
+Route::get('fileUpload', [\App\Http\Controllers\FileUploadController::class, 'fileUpload'] );
+
+Route::post('FileUpload', [\App\Http\Controllers\FileUploadController::class, 'upload']);
 
 
-Route::get('/MyFiles', function(){
+Route::get('/myFiles', function(){
     return view('MyFiles');
 });
 

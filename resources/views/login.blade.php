@@ -32,6 +32,13 @@
                         </div>
                     </div>
                 </div>
+                @foreach($errors->all() as $error)
+
+                    <div class="alert alert-danger">{{$error}}</div>
+
+
+
+                @endforeach
                 <input type="submit" value="Login" class="btn btn-info btn-block">
 
             </form>

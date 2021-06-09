@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 
 use Illuminate\Http\Request;
+use Exception;
 
 class RegistrationController extends Controller
 {
@@ -14,19 +15,26 @@ class RegistrationController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name'=>['required'],
-            'email'=>['required','email'],
-            'password' => [
-                'required',
-                'confirmed',
-            ],
-        ]);
+        try {
+            $request->validate([
+                'name' => ['required'],
+                'email' => ['required', 'email'],
+                'password' => [
+                    'required',
+                    'confirmed',
+                ],
+            ]);
 
-        $user = User::create(request(['name', 'email', 'password']));
+            $user = User::create(request(['name', 'email', 'password']));
 
-        auth()->login($user);
+            auth()->login($user);
 
-        return redirect()->to('/welcome');
+            return redirect()->to('/welcome');
+        }
+        catch(Exception $exception){
+            return back()->withError('Registration failed, account with this email address already exists!')->withInput();
+
+
+        }
     }
 }

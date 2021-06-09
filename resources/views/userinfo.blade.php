@@ -33,13 +33,17 @@
 
                 </form>
                 @if(Auth::User()->subscribed('Premium Collabpal'))
-                <h5><a href="/billing-portal">Billing Portal</a></h5>
                 @else
                     <form method="POST" action="/user/subscribe">
                         @csrf
                         <input type="submit" value="Subscribe" class="btn">
                     </form>
                 @endif
+                <h5><a href="/billing-portal">Billing Portal</a></h5>
+                @if (session('error'))
+                    <div class="alert alert-danger">{{ session('error') }}</div>
+                @endif
+
 
 
             </div>

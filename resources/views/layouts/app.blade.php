@@ -38,8 +38,8 @@
         <div class="collapse navbar-collapse">
             <a class="nav-link" href="/welcome">Home</a>
             @if (!Auth::guest())
-                <a class="nav-link" href="/MyFiles">My Files</a>
-                <a class="nav-link" href="/FileUpload">File Upload</a>
+                <a class="nav-link" href="/myFiles">My Files</a>
+                <a class="nav-link" href="/fileUpload">File Upload</a>
             @endif
                 <div class="navbar-nav ml-auto">
 
