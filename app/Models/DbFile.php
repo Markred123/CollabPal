@@ -10,7 +10,8 @@ class DbFile extends Model
     use HasFactory;
     protected $fillable=[
         'FileName',
-        'FilePath'
+        'FilePath',
+        'OrignalFileName'
 
     ];
 }

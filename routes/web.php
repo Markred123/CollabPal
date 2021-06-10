@@ -52,10 +52,10 @@ Route::get('fileUpload', [\App\Http\Controllers\FileUploadController::class, 'fi
 
 Route::post('FileUpload', [\App\Http\Controllers\FileUploadController::class, 'upload']);
 
+Route::get('fileDownload/{id}', [\App\Http\Controllers\DownloadFileController::class, 'download']);
 
-Route::get('/myFiles', function(){
-    return view('MyFiles');
-});
+
+Route::get('myFiles', [\App\Http\Controllers\DownloadFileController::class, 'downloadView'] );
 
 
 Route::get('/Testy', function(){
@@ -76,7 +76,13 @@ Route::get('/billing-portal', function (Request $request) {
     return $request->user()->redirectToBillingPortal(url('/userInfo'));
 });
 
-
+Route::get('/DownloadTest', function () {
+    return redirect(Storage::disk('s3')->temporaryUrl(
+        "files/21/1622757343S2 - Week 1 - Module Introduction (FS) (1).pptx",
+        now()->addHour(),
+        ['ResponseContentDisposition' => 'attachment']
+    ));
+});
 
 
 Route::post('/user/subscribe', [\App\Http\Controllers\SubscriptionController::class, 'subscribe']);
