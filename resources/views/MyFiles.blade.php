@@ -21,16 +21,19 @@
                 @foreach($userFile as $tes)
                     <div class="container">
                         <h6> {{$tes->originalFileName}} </h6>
-                        <a href="{{url('/fileDownload',$tes->id)}}"><button type ="button" class="btn-success">Download</button></a>
-                        <a href="{{url('/fileDelete',$tes->id)}}"><button class="btn-danger">Delete</button></a>
+                        <a  href="{{url('/fileDownload',$tes->id)}}"><button type ="button" class="btn-success">Download</button></a>
+                        <a onclick="return confirm('Are you sure?')" href="{{url('/fileDelete',$tes->id)}}"><button class="btn-danger">Delete</button></a>
+
                         <br>
                     </div>
 
                 @endforeach
+
 
             </div>
         </div>
 
 
     </div>
+
 @endsection
