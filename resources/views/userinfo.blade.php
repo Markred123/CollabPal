@@ -9,7 +9,7 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container perfect-centering">
         <div class="row">
             <div class ="col-sm">
             </div>
@@ -17,7 +17,11 @@
                 <h2>User Account Information</h2>
                 <h5>Name: {{ Auth::user()->name }}</h5>
                 <h5>Email Address: {{ Auth::user()->email }}</h5>
-                <h5>2FA:</h5>
+                @if(Auth::User()->subscribed('Premium Collabpal'))
+                    <h5>Subscribed</h5>
+                @else
+                    <h5>Not Subscribed</h5>
+                @endif
                 <form method="POST" action="/user/two-factor-authentication">
                     @csrf
 
@@ -26,26 +30,13 @@
                         <div class="pb-4">
                             {!! auth()->user()->twoFactorQrCodeSvg()!!}
                         </div>
-                        <button class="btn btn-danger">Disable</button>
+                        <button class="btn btn-danger">Disable Two Factor Authentication</button>
                     @else
-                        <button class="btn btn-primary">Enable</button>
+                        <button class="btn btn-primary">Enable Two Factor Authentication</button>
+
                     @endif
 
                 </form>
-                @if(Auth::User()->subscribed('Premium Collabpal'))
-                @else
-                    <form method="POST" action="/user/subscribe">
-                        @csrf
-                        <input type="submit" value="Subscribe" class="btn">
-                    </form>
-                @endif
-                <h5><a href="/billing-portal">Billing Portal</a></h5>
-                @if (session('error'))
-                    <div class="alert alert-danger">{{ session('error') }}</div>
-                @endif
-
-
-
             </div>
             <div class ="col-sm"></div>
 

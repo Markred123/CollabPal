@@ -13,16 +13,10 @@ use Exception;
 class FileUploadController extends Controller
 {
     // This function checks if the user is subscribed, if they are, returns the File Upload view, if not, they're redirected
-    public function fileUpload()
-    {
-        $user=Auth::User();
-        if($user->subscribed('Premium Collabpal')) {
-            return view('FileUpload');
-        }
-        else{
-            return redirect('userInfo');
+    public function fileUpload(){
 
-        }
+        return view('FileUpload');
+
     }
     //This function is for uploading to storage (s3) and writing the data to the database
     public function upload(Request $request): \Illuminate\Http\RedirectResponse

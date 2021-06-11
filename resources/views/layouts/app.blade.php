@@ -17,6 +17,10 @@
         padding-top: 50px;
 
     }
+    .padding {
+        padding-top: 50px;
+
+    }
 
     </style>
     <meta charset="UTF-8">
@@ -45,7 +49,9 @@
 
                     @if (!Auth::guest())
 
-                        <a class ="nav-link" href="/userInfo">{{ Auth::user()->name }} </a>
+                        <a class ="nav-link">{{ Auth::user()->name }} </a>
+                        <a class ="nav-link" href="/userInfo">Account</a>
+                        <a class ="nav-link" href="/subscription">Subscription</a>
                         <a class="nav-link" href="/destroy">Log Out</a>
 
                     @else

@@ -60,14 +60,7 @@ Route::get('fileDelete/{id}', [\App\Http\Controllers\DownloadFileController::cla
 Route::get('myFiles', [\App\Http\Controllers\DownloadFileController::class, 'downloadView'] );
 
 
-Route::get('/Testy', function(){
-    $directory="files/";
-    $files = Storage::allFiles($directory);
-    foreach($files as $file){
-        echo $file."\n";
 
-    }
-});
 
 use Illuminate\Http\Request;
 
@@ -75,18 +68,17 @@ use Illuminate\Http\Request;
 //Testing
 
 Route::get('/billing-portal', function (Request $request) {
-    return $request->user()->redirectToBillingPortal(url('/userInfo'));
+    $user = Auth::user();
+    $user->createOrGetStripeCustomer();
+    return $request->user()->redirectToBillingPortal(url('/subscription'));
 });
 
-Route::get('/DownloadTest', function () {
-    return redirect(Storage::disk('s3')->temporaryUrl(
-        "files/21/1622757343S2 - Week 1 - Module Introduction (FS) (1).pptx",
-        now()->addHour(),
-        ['ResponseContentDisposition' => 'attachment']
-    ));
-});
+
 
 
 Route::post('/user/subscribe', [\App\Http\Controllers\SubscriptionController::class, 'subscribe']);
 
+Route::get('/subscription', function(){
+    return view('subscription');
+});
 
