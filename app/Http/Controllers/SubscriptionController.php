@@ -12,8 +12,8 @@ class SubscriptionController extends Controller
 {
     public function subscribe(Request $request){
 
-        $user = Auth::User;
-        $user->createAsStripeCustomer();
+        $user = Auth::user();
+        $user->createOrGetStripeCustomer();
 
         try {$request->user()->newSubscription(
             'Premium Collabpal', 'price_1IzgvTF738EjpHYFAaTxqTWe'
