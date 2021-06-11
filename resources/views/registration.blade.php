@@ -18,12 +18,12 @@
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <label>Sign In</label>
 
-                            <input required type ="text" id="name" name="name" class="form-control input-sm" placeholder="Name"><br>
+                            <input required type ="text" id="name" name="name" class="form-control input-sm" placeholder="Name" value="{{ old('name') }}"><br>
                         </div>
 
 
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <input required type ="email" id="email" name="email" class="form-control input-sm" placeholder="Email"><br>
+                            <input required type ="email" id="email" name="email" class="form-control input-sm" placeholder="Email" value="{{ old('email') }}"><br>
                         </div>
 
 

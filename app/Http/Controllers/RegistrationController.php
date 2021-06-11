@@ -22,6 +22,7 @@ class RegistrationController extends Controller
                 'password' => [
                     'required',
                     'confirmed',
+                    'min:8',
                 ],
             ]);
 
@@ -32,7 +33,7 @@ class RegistrationController extends Controller
             return redirect()->to('/welcome');
         }
         catch(Exception $exception){
-            return back()->withError('Registration failed, account with this email address already exists!')->withInput();
+            return back()->withError($exception->getMessage())->withInput();
 
 
         }

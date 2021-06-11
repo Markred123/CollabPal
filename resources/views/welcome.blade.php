@@ -12,7 +12,7 @@
     <div class="container">
         <div class="card border-0 shadow my-5">
             <div style="height: 100vh">
-                <h1 class="font-weight-light">Welcome to CollabPal</h1>
+                <h1 class="font-weight-light perfect-centering">Welcome to CollabPal</h1>
 
 
             </div>
