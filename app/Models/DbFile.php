@@ -11,7 +11,7 @@ class DbFile extends Model
     protected $fillable=[
         'FileName',
         'FilePath',
-        'OrignalFileName'
+        'originalFileName',
 
     ];
 }

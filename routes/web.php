@@ -53,6 +53,8 @@ Route::get('fileUpload', [\App\Http\Controllers\FileUploadController::class, 'fi
 Route::post('FileUpload', [\App\Http\Controllers\FileUploadController::class, 'upload']);
 
 Route::get('fileDownload/{id}', [\App\Http\Controllers\DownloadFileController::class, 'download']);
+Route::get('fileDelete/{id}', [\App\Http\Controllers\DownloadFileController::class, 'delete']);
+
 
 
 Route::get('myFiles', [\App\Http\Controllers\DownloadFileController::class, 'downloadView'] );

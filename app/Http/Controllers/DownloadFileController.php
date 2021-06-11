@@ -25,7 +25,13 @@ class DownloadFileController extends Controller
             ['ResponseContentDisposition' => 'attachment']
         ));
 
-
+    }
+    public function delete($id){
+        $user = DbFile::where('id',$id)->first();
+        $filePath = $user->FilePath;
+        DbFile::where('id',$id)->delete();
+        Storage::disk('s3')->delete($filePath);
+        return back();
 
     }
 }

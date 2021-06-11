@@ -31,7 +31,7 @@ class FileUploadController extends Controller
             //gets user ID, uploads file based on user ID
             $id = Auth::id();
             $file = $request->file('file');
-            $originalFileName = $file->getClientOriginalName();
+            $oFileName = $file->getClientOriginalName();
             $fileName = time() . $file->getClientOriginalName();
             $filePath = "files/$id/" . $fileName;
             Storage::disk('s3')->put($filePath, file_get_contents($file));
@@ -39,12 +39,12 @@ class FileUploadController extends Controller
             //Gets user, uploads info to database based on user
             $user = Auth::user();
 
-            $dbFile = new Dbfile (['FileName' => "$fileName", 'FilePath' => "$filePath",'OriginalFileName'=>"$originalFileName" ]);
+            $dbFile = new Dbfile (['FileName' => "$fileName", 'FilePath' => "$filePath", 'originalFileName'=>"$oFileName"]);
             $user->dbfiles()->save($dbFile);
-            return back()->with('success', 'File Uploaded!');
+            return redirect()->intended('myFiles')->with('success', 'File Uploaded Successfully!');
         }
         catch(Exception $exception){
-            return back()->withError('Upload Failed! Please try again')->withInput();
+            return back()->withError($exception->getMessage())->withInput();
 
 
         }

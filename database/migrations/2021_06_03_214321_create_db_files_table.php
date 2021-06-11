@@ -18,7 +18,7 @@ class CreateDbFilesTable extends Migration
             $table->integer('user_id')->unsigned()->nullable()->index();
             $table->string('FileName');
             $table->string('FilePath');
-            $table->string('OriginalFileName');
+            $table->string('originalFileName');
             $table->timestamps();
         });
     }
