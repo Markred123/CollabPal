@@ -36,7 +36,7 @@
 <body>
 <div>
 
-    <nav class="navbar navbar-expand-sm fixed-top bg-light">
+    <nav class="navbar navbar-expand-sm fixed-top bg-light navbar-collapse">
 
         <a class="navbar-brand" href="#">CollabPal</a>
         <div class="collapse navbar-collapse">
