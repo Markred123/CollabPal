@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Folder;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Storage;
@@ -14,8 +15,10 @@ class FileUploadController extends Controller
 {
     // This function checks if the user is subscribed, if they are, returns the File Upload view, if not, they're redirected
     public function fileUpload(){
+        $user=\Illuminate\Support\Facades\Auth::id();
+        $userFolder = Folder::where('user_id', $user)->get();
 
-        return view('FileUpload');
+        return view('FileUpload', compact('userFolder'));
 
     }
     //This function is for uploading to storage (s3) and writing the data to the database
@@ -25,6 +28,7 @@ class FileUploadController extends Controller
             //gets user ID, uploads file based on user ID
             $id = Auth::id();
             $file = $request->file('file');
+            $folder = $request->get('folders');
             $oFileName = $file->getClientOriginalName();
             $fileName = time() . $file->getClientOriginalName();
             $filePath = "files/$id/" . $fileName;
@@ -33,9 +37,9 @@ class FileUploadController extends Controller
             //Gets user, uploads info to database based on user
             $user = Auth::user();
 
-            $dbFile = new Dbfile (['FileName' => "$fileName", 'FilePath' => "$filePath", 'originalFileName'=>"$oFileName"]);
+            $dbFile = new Dbfile (['FileName' => "$fileName", 'FilePath' => "$filePath", 'originalFileName'=>"$oFileName",'folder_id'=>"$folder"]);
             $user->dbfiles()->save($dbFile);
-            return redirect()->intended('myFiles')->with('success', 'File Uploaded Successfully!');
+            return redirect()->intended('fileFolder')->with('success', "Uploaded Sucessfully");
         }
         catch(Exception $exception){
             return back()->withError($exception->getMessage())->withInput();

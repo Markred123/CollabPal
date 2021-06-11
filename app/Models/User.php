@@ -51,4 +51,7 @@ class User extends Authenticatable
     public function dbfiles(){
         return $this->hasMany('App\Models\DbFile');
     }
+    public function folders(){
+        return $this->hasMany('App\Models\Folder');
+    }
 }

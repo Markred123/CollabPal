@@ -36,13 +36,13 @@
 <body>
 <div>
 
-    <nav class="navbar navbar-expand-sm fixed-top bg-light navbar-collapse">
+    <nav class="navbar navbar-expand-sm fixed-top bg-light">
 
         <a class="navbar-brand" href="#">CollabPal</a>
         <div class="collapse navbar-collapse">
             <a class="nav-link" href="/welcome">Home</a>
             @if (!Auth::guest())
-                <a class="nav-link" href="/myFiles">My Files</a>
+                <a class="nav-link" href="/fileFolder">My Files</a>
                 <a class="nav-link" href="/fileUpload">File Upload</a>
             @endif
                 <div class="navbar-nav ml-auto">
@@ -67,6 +67,7 @@
 
 
 </div>
+
 
 @yield('content')
 

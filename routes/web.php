@@ -1,9 +1,12 @@
 <?php
 
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\LoginController;
 use App\User;
+use App\Models\Folder;
 
 
 /*
@@ -54,10 +57,11 @@ Route::post('FileUpload', [\App\Http\Controllers\FileUploadController::class, 'u
 
 Route::get('fileDownload/{id}', [\App\Http\Controllers\DownloadFileController::class, 'download']);
 Route::get('fileDelete/{id}', [\App\Http\Controllers\DownloadFileController::class, 'delete']);
+Route::get('folderDelete/{id}', [\App\Http\Controllers\FileFolderController::class, 'folderDelete']);
 
 
 
-Route::get('myFiles', [\App\Http\Controllers\DownloadFileController::class, 'downloadView'] );
+Route::get('myFiles/{id}', [\App\Http\Controllers\DownloadFileController::class, 'downloadView'] );
 
 
 
@@ -82,3 +86,6 @@ Route::get('/subscription', function(){
     return view('subscription');
 });
 
+Route::get('/fileFolder', [\App\Http\Controllers\FileFolderController::class, 'fileFolderView']);
+
+Route::post('/newFolder', [\App\Http\Controllers\FileFolderController::class, 'folderCreate']);

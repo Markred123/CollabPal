@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Files extends Model
+class Folder extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'FileName',
-        'FilePath'
+        'FolderName',
+
 
     ];
-}
 
+}

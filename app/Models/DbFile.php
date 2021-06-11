@@ -12,6 +12,12 @@ class DbFile extends Model
         'FileName',
         'FilePath',
         'originalFileName',
+        'FileFolder',
+        'folder_id',
 
     ];
+
+    public function dbfiles(){
+        return $this->hasMany('App\Models\DbFile');
+    }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDbFilesTable extends Migration
+class CreateFoldersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateDbFilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('db_files', function (Blueprint $table) {
+        Schema::create('folders', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->unsigned()->nullable()->index();
-            $table->integer('folder_id')->unsigned()->nullable()->index();
-            $table->string('FileName');
-            $table->string('FilePath');
-            $table->string('originalFileName');
             $table->timestamps();
+            $table->string('FolderName')->unique();
+
         });
     }
 
@@ -31,6 +29,6 @@ class CreateDbFilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('db_files');
+        Schema::dropIfExists('folders');
     }
 }

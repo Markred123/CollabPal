@@ -10,9 +10,9 @@ use DB;
 class DownloadFileController extends Controller
 {
 
-    public function downloadView(){
-        $user=\Illuminate\Support\Facades\Auth::id();
-        $userFile = DbFile::where('user_id', $user)->get();
+    public function downloadView($folderid){
+
+        $userFile = DbFile::where('folder_id', $folderid)->get();
         return view('MyFiles',compact('userFile'));
     }
     public function download($id){
