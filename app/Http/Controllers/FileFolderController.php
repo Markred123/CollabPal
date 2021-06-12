@@ -12,7 +12,11 @@ class FileFolderController extends Controller
     public function fileFolderView(){
         $user=\Illuminate\Support\Facades\Auth::id();
         $userFolder = Folder::where('user_id', $user)->get();
-        return view('FileFolders',compact('userFolder'));
+            return view('FileFolders',compact('userFolder'));
+
+
+            return redirect('welcome');
+
     }
 
     public function folderDelete($id){
