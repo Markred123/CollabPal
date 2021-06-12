@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Models\DbFile;
 use Storage;
 use DB;
 use Auth;
+use App\Models\User;
+use App\Models\Shared;
 
 class DownloadFileController extends Controller
 {
@@ -54,6 +57,27 @@ class DownloadFileController extends Controller
         if(Auth::id()==$userVerify4) {
             DbFile::where('id', $id)->delete();
             Storage::disk('s3')->delete($filePath);
+            return redirect('fileFolder');
+        }
+        else{
+            return redirect('welcome');
+        }
+
+    }
+    public function share(Request $recipient){
+
+        $id = $recipient->id;
+        $recipientId=$recipient->recipient;
+        $shareFile = DbFile::where('id',$id)->first();
+        $filePath = $shareFile->FilePath;
+        $oFileName = $shareFile->originalFileName;
+        $userVerify=$shareFile->user_id;
+        $finalRecipient = User::where('email',$recipientId)->first();
+        $recipientFinalId = $finalRecipient->id;
+
+        if(Auth::id()==$userVerify) {
+            $shared = new Shared (['FilePath' => "$filePath", 'originalFileName'=>"$oFileName",'recipient_id'=>"$recipientFinalId"]);
+            $shared->save();
             return redirect('fileFolder');
         }
         else{

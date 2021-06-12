@@ -57,7 +57,12 @@ Route::post('FileUpload', [\App\Http\Controllers\FileUploadController::class, 'u
 
 Route::get('fileDownload/{id}', [\App\Http\Controllers\DownloadFileController::class, 'download']);
 Route::get('fileDelete/{id}', [\App\Http\Controllers\DownloadFileController::class, 'delete']);
+Route::get('fileShare/{id}', [\App\Http\Controllers\DownloadFileController::class, 'share']);
+Route::post('fileShare', [\App\Http\Controllers\DownloadFileController::class, 'share']);
+
 Route::get('folderDelete/{id}', [\App\Http\Controllers\FileFolderController::class, 'folderDelete']);
+Route::get('folderDelete/{id}', [\App\Http\Controllers\FileFolderController::class, 'folderDelete']);
+
 
 
 

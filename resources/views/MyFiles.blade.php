@@ -23,6 +23,17 @@
                         <h6> {{$tes->originalFileName}} </h6>
                         <a  href="{{url('/fileDownload',$tes->id)}}"><button type ="button" class="btn-success">Download</button></a>
                         <a onclick="return confirm('Are you sure?')" href="{{url('/fileDelete',$tes->id)}}"><button class="btn-danger">Delete</button></a>
+                        <div>
+                            <form method="post" action="/fileShare">
+                                @csrf
+                                <input type="text" id="recipient" name="recipient" required>
+                                <input type="hidden" id="id" name="id" value="{{$tes->id}}">
+
+                                <a  href=""><button type ="submit button" class="btn-primary">Share</button></a>
+                            </form>
+                        </div>
+
+
 
                         <br>
                     </div>
