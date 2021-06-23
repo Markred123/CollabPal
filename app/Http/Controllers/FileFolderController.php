@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class FileFolderController extends Controller
 {
+    //This function displays the folder view
     public function fileFolderView(){
         $user=\Illuminate\Support\Facades\Auth::id();
         $userFolder = Folder::where('user_id', $user)->get();
@@ -18,12 +19,14 @@ class FileFolderController extends Controller
             return redirect('welcome');
 
     }
-
+    //this function allows users to delete folders
     public function folderDelete($id){
         Folder::where('id',$id)->delete();
+        DbFile::where('folder_id',$id)->delete();
         return back();
 
     }
+    //this function allows users to create folders
     public function folderCreate(Request $folderFormData){
         $folderName=$folderFormData->folderName;
         $users = Auth::user();

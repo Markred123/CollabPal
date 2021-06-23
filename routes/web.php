@@ -27,13 +27,13 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/registration', function(){
-    if(!Auth::guest()){
-        return redirect()->intended('welcome');
-    }
-    else
-    return view('registration');
-});
+//Route::get('/registration', function(){
+//    if(!Auth::guest()){
+//        return redirect()->intended('welcome');
+//    }
+//    else
+//    return view('registration');
+//});
 
 
 //Logout Routes
@@ -42,8 +42,8 @@ Route::Get('/destroy',function(){
     return redirect()->intended('welcome');
 });
 //Registration Routes
-Route::get('/register',[RegistrationController::class, 'create']);
-Route::post('register', [RegistrationController::class, 'store'] );
+//Route::get('/register',[RegistrationController::class, 'create']);
+//Route::post('register', [RegistrationController::class, 'store'] );
 
 
 //User Info Route
@@ -58,7 +58,14 @@ Route::post('FileUpload', [\App\Http\Controllers\FileUploadController::class, 'u
 Route::get('fileDownload/{id}', [\App\Http\Controllers\DownloadFileController::class, 'download']);
 Route::get('fileDelete/{id}', [\App\Http\Controllers\DownloadFileController::class, 'delete']);
 Route::get('fileShare/{id}', [\App\Http\Controllers\DownloadFileController::class, 'share']);
+Route::get('fileShareByLink/{id}', [\App\Http\Controllers\DownloadFileController::class, 'shareByLink']);
+
 Route::post('fileShare', [\App\Http\Controllers\DownloadFileController::class, 'share']);
+
+Route::get('sharedFiles',[\App\Http\Controllers\ShareController::class,'shareView']);
+Route::get('sharedDelete/{id}',[\App\Http\Controllers\ShareController::class,'shareDelete']);
+Route::get('sharedDownload/{id}',[\App\Http\Controllers\ShareController::class,'shareDownload']);
+
 
 Route::get('folderDelete/{id}', [\App\Http\Controllers\FileFolderController::class, 'folderDelete']);
 Route::get('folderDelete/{id}', [\App\Http\Controllers\FileFolderController::class, 'folderDelete']);
@@ -75,6 +82,10 @@ use Illuminate\Http\Request;
 
 
 //Testing
+Route::post('/testing', function (Request $request) {
+    return $request;
+
+});
 
 Route::get('/billing-portal', function (Request $request) {
     $user = Auth::user();

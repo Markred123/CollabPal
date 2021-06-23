@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-
+    //old login controller, from before Laravel Fortify took over auth
     public function authenticate(Request $request){
 
         $creds = $request->validate([

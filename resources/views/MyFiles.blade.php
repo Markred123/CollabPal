@@ -2,6 +2,18 @@
 
 
 @section('scripts')
+    <script>
+    $("#formButton").click(function(){
+    $("#form1").toggle();
+    });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#formButton").click(function() {
+                $("#form1").toggle();
+            });
+        });
+    </script>
 @endsection
 
 @section('content')
@@ -22,22 +34,25 @@
                     <div class="container">
                         <h6> {{$tes->originalFileName}} </h6>
                         <a  href="{{url('/fileDownload',$tes->id)}}"><button type ="button" class="btn-success">Download</button></a>
-                        <a onclick="return confirm('Are you sure?')" href="{{url('/fileDelete',$tes->id)}}"><button class="btn-danger">Delete</button></a>
+                        <a onclick="return confirm('Are you sure you want to delete this?')" href="{{url('/fileDelete',$tes->id)}}"><button class="btn-danger">Delete</button></a>
+                        <a href ="{{url('/fileShareByLink',$tes->id)}}" onclick="return confirm('Warning: Shared file can be accessed by anyone with the link. Do you wish to continue?')"><button type ="submit button" class="btn-info">Share by link</button></a>
+
+
                         <div>
-                            <form method="post" action="/fileShare">
+                            <br>
+
+                            <form method="post" action="/fileShare" id="form1">
                                 @csrf
-                                <input type="text" id="recipient" name="recipient" required>
+                                <input type="text" id="recipient" name="recipient" placeholder="Recipient Email" required>
                                 <input type="hidden" id="id" name="id" value="{{$tes->id}}">
 
-                                <a  href=""><button type ="submit button" class="btn-primary">Share</button></a>
+                                <a  href=""><button type ="submit button" class="btn-primary" >Share by email</button></a>
                             </form>
+
+
                         </div>
-
-
-
                         <br>
                     </div>
-
                 @endforeach
 
 

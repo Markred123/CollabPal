@@ -8,11 +8,12 @@ use Exception;
 
 class RegistrationController extends Controller
 {
+    //shows the registration view
     public function create(){
         return view('registration');
     }
 
-
+    //This function is the registration function, it takes the user information, validates it, and stores in the database
     public function store(Request $request)
     {
         try {

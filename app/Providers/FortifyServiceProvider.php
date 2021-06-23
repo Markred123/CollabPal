@@ -46,10 +46,21 @@ class FortifyServiceProvider extends ServiceProvider
 
         Fortify::loginView(function () {
             return view('login');
+
+        });
+        Fortify::registerView(function () {
+            return view('register');
         });
         Fortify::twoFactorChallengeView(function(){
             return view('two-factor-challenge');
         });
+        Fortify::requestPasswordResetLinkView(function () {
+            return view('forgot-password');
+        });
+        Fortify::resetPasswordView(function ($request) {
+            return view('reset-password', ['request' => $request]);
+        });
+
 
     }
 }

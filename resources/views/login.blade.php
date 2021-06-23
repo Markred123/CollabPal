@@ -10,8 +10,8 @@
 
     <div class="col-md-offset-3 container perfect-centering">
 
-        <div class ="container col-lg-6">
-            <form class="card p-3 bg-light " method="post" action="login">
+        <div class ="container col-lg-6 card p-3 bg-light">
+            <form class="" method="post" action="login">
                 @csrf
                 <div class = "container  col-lg-12">
 
@@ -23,12 +23,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
 
-                            <input required type ="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror input-sm" placeholder="Password"><br>
-                            @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                            @enderror
+                            <input required type ="password" id="password" name="password" class="form-control input-sm" placeholder="Password"><br>
                         </div>
                     </div>
                 </div>
@@ -42,6 +37,13 @@
                 <input type="submit" value="Login" class="btn btn-info btn-block">
 
             </form>
+           <a href="/forgot-password"> <button class="btn btninfo btn-block">Forgot Password</button></a>
+
+        @if (session('status'))
+                <div class="mb-4 font-medium text-sm text-green-600">
+                    {{ session('status') }}
+                </div>
+            @endif
         </div>
 
 
