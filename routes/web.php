@@ -27,13 +27,7 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-//Route::get('/registration', function(){
-//    if(!Auth::guest()){
-//        return redirect()->intended('welcome');
-//    }
-//    else
-//    return view('registration');
-//});
+
 
 
 //Logout Routes
@@ -41,9 +35,7 @@ Route::Get('/destroy',function(){
     Session::flush();
     return redirect()->intended('welcome');
 });
-//Registration Routes
-//Route::get('/register',[RegistrationController::class, 'create']);
-//Route::post('register', [RegistrationController::class, 'store'] );
+
 
 
 //User Info Route
@@ -81,11 +73,7 @@ Route::get('myFiles/{id}', [\App\Http\Controllers\DownloadFileController::class,
 use Illuminate\Http\Request;
 
 
-//Testing
-Route::post('/testing', function (Request $request) {
-    return $request;
 
-});
 
 Route::get('/billing-portal', function (Request $request) {
     $user = Auth::user();

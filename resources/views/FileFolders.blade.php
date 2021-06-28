@@ -1,3 +1,5 @@
+{{--15/05/2021--}}
+{{--@author Mark Redmond x16355811--}}
 @extends('layouts.app')
 
 
@@ -40,18 +42,20 @@
 
         <div class="perfect-centering">
             @if(Auth::User()->subscribed('Premium Collabpal'))
-                <form  action="{{ url('FileUpload') }}" method="post" enctype="multipart/form-data">
+                <form class="card p-3 bg-light"  action="{{ url('FileUpload') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <input type="file" name="file" id="file" required="required">
-                    <button type="submit">Upload</button>
 
                     <br>
-                    <label>Folder:</label>
+                    <label>Choose a folder:</label>
                     <select id="folders" name="folders" required>
                         @foreach($userFolder as $folder)
                             <option value="{{$folder->id}}">{{$folder->FolderName}}</option>
                         @endforeach
                     </select>
+                    <br>
+                    <button type="submit">Upload</button>
+
                 </form>
 
 

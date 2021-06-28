@@ -1,3 +1,5 @@
+{{--15/05/2021--}}
+{{--@author Mark Redmond x16355811--}}
 @extends('layouts.app')
 
 
@@ -7,32 +9,40 @@
 @endsection
 
 @section('content')
-    <div class="col-md-3 col-md-offset-4 container ">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+    {{-- Welcome.blade.php--}}
+    {{--25/05/21--}}
+    {{--@AUTHOR Mark Redmond--}}
+    @extends('layouts.app')
 
-        <div class ="container col-md-12">
-            <form class="card p-3 bg-light " method="POST" action="{{url('/two-factor-challenge') }}">
+@section('scripts')
+
+@endsection
+
+
+@section('content')
+    <div class="col-md-offset-3 container perfect-centering">
+
+        <div class ="container col-lg-6">
+
+            <form class="card p-3 bg-light " method="post" action="/two-factor-challenge">
                 @csrf
-                <div class = "container  col-lg-12">
-
-                    <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div class="form-group">
-                            <input type="text" name="code" placeholder="Code"><br>
-                        </div>
-                    </div>
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <input required type ="text" id="code" name="code" class="form-control input-sm" placeholder="Code"><br>
                 </div>
-                <input name="submit" type="submit" value="Submit" class="btn btn-info btn-block">
+
+                @if (session('error'))
+                    <div class="alert alert-danger">{{ session('error') }}</div>
+                @endif
+                <input type="submit" value="Submit" class="btn btn-info btn-block">
 
             </form>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                        <div>{{ $error }}</div>
+                    @endforeach
+                </div>
+            @endif
         </div>
 
 
@@ -40,5 +50,7 @@
 
 
     </div>
+@endsection
+
 
 @endsection

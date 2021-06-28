@@ -11,9 +11,9 @@
 @section('content')
     <div class="col-md-offset-3 container perfect-centering">
 
-        <div class ="container col-lg-6">
+        <div class ="container col-lg-6 card p-3 bg-light ">
 
-            <form class="card p-3 bg-light " method="post" action="/register">
+            <form method="post" action="/register">
                 @csrf
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <label>Sign Up</label>
