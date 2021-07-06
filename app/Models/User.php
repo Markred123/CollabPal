@@ -54,4 +54,7 @@ class User extends Authenticatable
     public function folders(){
         return $this->hasMany('App\Models\Folder');
     }
+    public function groups(){
+        return $this->belongsToMany('App\Models\Group');
+    }
 }

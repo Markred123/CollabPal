@@ -14,24 +14,24 @@
             <div style="height: 100vh ">
                 @if(Auth::User()->subscribed('Premium Collabpal'))
 
-                <h1 class="font-weight-light">My Folders:</h1>
+                    <h1 class="font-weight-light">My Folders:</h1>
 
-                @foreach($userFolder as $folder)
+                    @foreach($user->groups as $group)
+                        <div class="container">
+                            <a href="{{url('/myFiles',$group->id)}}">{{$group->name}} </a>
+{{--                            <br>--}}
+{{--                            <a onclick="return confirm('Are you sure?')" href="{{url('/folderDelete',$folder->id)}}"><button class="btn-danger">Delete</button></a>--}}
+{{--                            <br>--}}
+                        </div>
+                    @endforeach
                     <div class="container">
-                        <a href="{{url('/myFiles',$folder->id)}}">{{$folder->FolderName}} </a>
-                        <br>
-                        <a onclick="return confirm('Are you sure?')" href="{{url('/folderDelete',$folder->id)}}"><button class="btn-danger">Delete</button></a>
-                        <br>
+                        <form method="post" action="/groupCreate">
+                            @csrf
+                            <label>Create a group</label>
+                            <input type="text" id="name" name="name" required>
+                            <input type="submit" value="Create">
+                        </form>
                     </div>
-                @endforeach
-                <div class="container">
-                    <form method="post" action="/newFolder">
-                        @csrf
-                        <label>Create Folder</label>
-                        <input type="text" id="folderName" name="folderName" required>
-                        <input type="submit" value="Create">
-                    </form>
-                </div>
 
 
             </div>
@@ -53,8 +53,8 @@
                     <br>
                     <label>Choose a folder:</label>
                     <select id="folders" name="folders" required>
-                        @foreach($userFolder as $folder)
-                            <option value="{{$folder->id}}">{{$folder->FolderName}}</option>
+                        @foreach($user->groups as $group)
+                            <option value="{{$group->id}}">{{$group->name}}</option>
                         @endforeach
                     </select>
                     <br>

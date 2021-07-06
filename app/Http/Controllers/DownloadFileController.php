@@ -14,7 +14,7 @@ use DB;
 use Auth;
 use App\Models\User;
 use App\Models\Shared;
-
+//Even though this is named the DownloadFileController, it handles downloading, deletion and sharing of files!
 class DownloadFileController extends Controller
 {
 // This function displays the view MyFiles, which displays the files uploaded by a user based on the folder they click
