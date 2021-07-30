@@ -20,7 +20,6 @@ class CreateDbFilesTable extends Migration
             $table->string('FileName');
             $table->string('FilePath');
             $table->string('originalFileName');
-            $table->string('group')->nullable();
             $table->timestamps();
         });
     }
