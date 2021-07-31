@@ -45,8 +45,6 @@
             @if (!Auth::guest())
                 <a class="nav-link" href="/fileFolder">My Files</a>
                 <a class="nav-link" href="/sharedFiles">Shared Files</a>
-                <a class="nav-link" href="/groupView">My Groups</a>
-
 
             @endif
                 <div class="navbar-nav ml-auto">
