@@ -37,9 +37,8 @@
                         <h6> {{$tes->originalFileName}} </h6>
                         <a  href="{{url('/fileDownload',$tes->id)}}"><button type ="button" class="btn-success">Download</button></a>
                         <a onclick="return confirm('Are you sure you want to delete this?')" href="{{url('/fileDelete',$tes->id)}}"><button class="btn-danger">Delete</button></a>
-                        <a href ="{{url('/fileShareByLink',$tes->id)}}" onclick="return confirm('Warning: Shared file can be accessed by anyone with the link. Do you wish to continue?')"><button type ="submit button" class="btn-info">Share by link</button></a>
-
-
+                        <a href ="{{url('/fileShareByLink',$tes->id)}}" onclick="return confirm('Warning: Shared file can be accessed by anyone with the link. Do you wish to continue?')">
+                            <button type ="submit button" class="btn-info">Share by link</button></a>
                         <div>
                             <br>
 
@@ -50,8 +49,6 @@
 
                                 <a  href=""><button type ="submit button" class="btn-primary" >Share by email</button></a>
                             </form>
-
-
                         </div>
                         <br>
                     </div>

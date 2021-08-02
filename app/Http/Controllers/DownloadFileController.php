@@ -35,7 +35,7 @@ class DownloadFileController extends Controller
             }
         }
         catch(Exception $exception){
-            return back()->withError($exception->getMessage())->withInput();
+            return back()->withErrors($exception->getMessage())->withInput();
         }
     }
 
@@ -62,6 +62,7 @@ class DownloadFileController extends Controller
         $filePath = $user->FilePath;
     //User verification system: Takes the users ID by matching it with the file ID in the database and compares it to the currently authenticated user
         $userVerify4=$user->user_id;
+        //if statement checks if user is verified
         if(Auth::id()==$userVerify4) {
             DbFile::where('id', $id)->delete();
             Storage::disk('s3')->delete($filePath);

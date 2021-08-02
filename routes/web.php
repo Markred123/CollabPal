@@ -41,7 +41,7 @@ Route::get('/destroy',function(){
 Route::middleware('auth')->get('/userInfo', function(){
     return view('userinfo');
 });
-
+//File CRUD routes
 Route::middleware('auth')->get('fileUpload', [\App\Http\Controllers\FileUploadController::class, 'fileUpload'] );
 
 Route::middleware('auth')->post('FileUpload', [\App\Http\Controllers\FileUploadController::class, 'upload']);
@@ -50,14 +50,13 @@ Route::middleware('auth')->get('fileDownload/{id}', [\App\Http\Controllers\Downl
 Route::middleware('auth')->get('fileDelete/{id}', [\App\Http\Controllers\DownloadFileController::class, 'delete']);
 Route::middleware('auth')->get('fileShare/{id}', [\App\Http\Controllers\DownloadFileController::class, 'share']);
 Route::middleware('auth')->get('fileShareByLink/{id}', [\App\Http\Controllers\DownloadFileController::class, 'shareByLink']);
-
 Route::middleware('auth')->post('fileShare', [\App\Http\Controllers\DownloadFileController::class, 'share']);
-
+//Shared Files Routes
 Route::middleware('auth')->get('sharedFiles',[\App\Http\Controllers\ShareController::class,'shareView']);
 Route::middleware('auth')->get('sharedDelete/{id}',[\App\Http\Controllers\ShareController::class,'shareDelete']);
 Route::middleware('auth')->get('sharedDownload/{id}',[\App\Http\Controllers\ShareController::class,'shareDownload']);
 
-
+//Group Routes (Not Implemented )
 Route::middleware('auth')->get('groupView',[\App\Http\Controllers\GroupController::class,'groupView']);
 Route::middleware('auth')->post('groupCreate',[\App\Http\Controllers\GroupController::class,'groupCreate']);
 Route::middleware('auth')->post('groupAdd',[\App\Http\Controllers\GroupController::class,'groupAdd']);

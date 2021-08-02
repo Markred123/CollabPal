@@ -28,11 +28,7 @@
                     </div>
                 </div>
                 @foreach($errors->all() as $error)
-
                     <div class="alert alert-danger">{{$error}}</div>
-
-
-
                 @endforeach
                 <input type="submit" value="Login" class="btn btn-info btn-block">
 
@@ -40,10 +36,10 @@
            <a href="/forgot-password"> <button class="btn btninfo btn-block">Forgot Password</button></a>
 
         @if (session('status'))
-                <div class="mb-4 font-medium text-sm text-green-600">
-                    {{ session('status') }}
-                </div>
-            @endif
+            <div class="mb-4 font-medium text-sm text-green-600">
+                {{ session('status') }}
+            </div>
+         @endif
         </div>
 
 

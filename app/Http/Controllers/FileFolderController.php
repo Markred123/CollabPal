@@ -20,8 +20,6 @@ class FileFolderController extends Controller
             return view('FileFolders',compact('userFolder'));
 
 
-            return redirect('welcome');
-
     }
     //this function allows users to delete folders
     public function folderDelete($id){
